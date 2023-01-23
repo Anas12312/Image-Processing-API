@@ -59,7 +59,7 @@ describe('Test endpoint responses', function () {
         });
     }); });
     // Tests if the Wrong filename is Handled
-    it('Expect to Send File Doesn\'t Exist', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it("Expect to Send File Doesn't Exist", function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -77,6 +77,18 @@ describe('Test endpoint responses', function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, request.get('/api/images?' + 'filename=noFile')];
+                case 1:
+                    response = _a.sent();
+                    expect(response.statusCode).toBe(400);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('Expect to Send Not Valid Parameters', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/api/images?' + 'filename=noFile&width=abc&height=abc')];
                 case 1:
                     response = _a.sent();
                     expect(response.statusCode).toBe(400);

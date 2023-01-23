@@ -55,9 +55,13 @@ app.get('/api/images', function (req, res) { return __awaiter(void 0, void 0, vo
                 filename = req.query.filename;
                 width = req.query.width;
                 height = req.query.height;
+                if (isNaN(Number(width)) || isNaN(Number(height))) {
+                    res.status(400).send('Please Enter a Valid Parameters!');
+                    return [2 /*return*/];
+                }
                 // Checks For any Parameter Missing
                 if (!filename || !width || !height) {
-                    res.status(400).send('Please Select an Image\'s Name, Width and Height!');
+                    res.status(400).send("Please Select an Image's Name, Width and Height!");
                     return [2 /*return*/];
                 }
                 thumbPath = path_1.default.join(__dirname, '../images/thumb', filename + width + height + '.jpg');
@@ -80,7 +84,7 @@ app.get('/api/images', function (req, res) { return __awaiter(void 0, void 0, vo
                 }
                 return [3 /*break*/, 4];
             case 3:
-                res.status(404).send('This Image Doesn\'t Exist!');
+                res.status(404).send("This Image Doesn't Exist!");
                 _a.label = 4;
             case 4: return [2 /*return*/];
         }
