@@ -14,7 +14,7 @@ describe('Test endpoint responses', () => {
   });
 
   // Tests if the Wrong filename is Handled
-  it("Expect to Send File Doesn't Exist", async () => {
+  it('Expect to Send File Doesn\'t Exist', async () => {
     const response = await request.get(
       '/api/images?' + 'filename=noFile&width=200&height=200'
     );

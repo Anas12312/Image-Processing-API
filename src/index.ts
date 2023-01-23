@@ -13,13 +13,18 @@ app.get('/api/images', async (req: Request, res: Response): Promise<void> => {
   const filename = req.query.filename as string;
   const width = req.query.width as string;
   const height = req.query.height as string;
-  if (isNaN(Number(width)) || isNaN(Number(height)) || Number(height) < 1 || Number(width) < 1) {
+  if (
+    isNaN(Number(width)) ||
+    isNaN(Number(height)) ||
+    Number(height) < 1 ||
+    Number(width) < 1
+  ) {
     res.status(400).send('Please Enter a Valid Parameters!');
     return;
   }
   // Checks For any Parameter Missing
   if (!filename || !width || !height) {
-    res.status(400).send("Please Select an Image's Name, Width and Height!");
+    res.status(400).send('Please Select an Image\'s Name, Width and Height!');
     return;
   }
 
@@ -50,7 +55,7 @@ app.get('/api/images', async (req: Request, res: Response): Promise<void> => {
         res.status(400).send('An Error has Occured!');
       }
     } else {
-      res.status(404).send("This Image Doesn't Exist!");
+      res.status(404).send('This Image Doesn\'t Exist!');
     }
   }
 });
