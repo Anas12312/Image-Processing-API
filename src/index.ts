@@ -13,7 +13,7 @@ app.get('/api/images', async (req: Request, res: Response): Promise<void> => {
   const filename = req.query.filename as string;
   const width = req.query.width as string;
   const height = req.query.height as string;
-  if (isNaN(Number(width)) || isNaN(Number(height))) {
+  if (isNaN(Number(width)) || isNaN(Number(height)) || Number(height) < 1 || Number(width) < 1) {
     res.status(400).send('Please Enter a Valid Parameters!');
     return;
   }
